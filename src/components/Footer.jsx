@@ -30,7 +30,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <hr className='w-full max-w-[1280px] mx-auto mb-3 border-b border-neutral-600' noshade />
+      <hr className='w-full max-w-[1280px] mx-auto mb-3 border-b border-neutral-600' noshade="true" />
       <div className='max-w-[1280px] mx-auto text-xs xs:text-sm'>
         &copy; Copyright 2023, Made by <span className='underline text-primary'>Mateen Ahmed</span>
       </div>

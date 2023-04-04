@@ -137,7 +137,7 @@ const Contact = () => {
 
 
   return (
-    <div className="flex flex-col justify-center items-center font-pop max-w-[1280px] font-poppins p-1 xs:p-8 mx-auto">
+    <div className="flex flex-col justify-center items-center font-pop max-w-[1280px] font-poppins p-1 px-2.5 xs:p-8 mx-auto">
       <div
         ref={alertRef}
         className={`${alert.state ? "flex" : "hidden"
@@ -207,7 +207,7 @@ const Contact = () => {
           </div>
         </form>
       </div>
-      <div className="fadeRight border-2 border-gray-800 bg-black/10 w-full flex flex-wrap justify-center text-center py-5 mt-4">
+      <div className="fadeRight border-2 border-gray-800 bg-black/10 w-full flex flex-wrap justify-center text-center py-5 m-4">
         <span>
           <a
             href="https://www.google.com/maps/@24.884498,67.047415,16z?hl=en"

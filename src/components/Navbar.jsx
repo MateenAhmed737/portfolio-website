@@ -34,6 +34,7 @@ const Navbar = () => {
       pushPagesVisited(userId);
       setPagesVisited(prev => [...prev, window.location.pathname]);
     }
+    window.scroll({ top: 0, behavior: 'smooth' })
   }, [location]);
 
   useEffect(() => {

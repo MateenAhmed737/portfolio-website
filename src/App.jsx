@@ -61,18 +61,20 @@ function App() {
   }
 
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="portfolio" element={<Portfolio />} />
-        <Route exact path="project/:id" element={<Project />} />
-        <Route exact path="experience" element={<Experience />} />
-        <Route exact path="contact" element={<Contact />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <div className="relative overflow-x-hidden">
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="portfolio" element={<Portfolio />} />
+          <Route exact path="project/:id" element={<Project />} />
+          <Route exact path="experience" element={<Experience />} />
+          <Route exact path="contact" element={<Contact />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
