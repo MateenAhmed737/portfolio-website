@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  cursor: url("./assets/cursor.svg"), default;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: rgb(99 102 241);
+  color: white;
+}
+
+.drum-pad:active {
+  background-color: #e5e7eb;
+}
+
+@keyframes btn_Anime {
+  0%,
+  100% {
+    background-color: #f8fafc;
+    transform: scale(1);
+  }
+  50% {
+    background-color: #f1f5f9;
+    transform: scale(0.9);
+  }
+}
+
+.btn_Anime {
+  animation: btn_Anime 300ms 1;
+}
+
+@keyframes new_quote_Anime {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+.new_quote_Anime {
+  animation: new_quote_Anime 300ms 1;
+}
