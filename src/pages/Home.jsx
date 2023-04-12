@@ -114,7 +114,7 @@ const Home = () => {
       autoStart: true,
       loop: true,
       delay: "natural",
-      cursor: false
+      cursor: ''
     });
 
     return () => {
@@ -128,6 +128,7 @@ const Home = () => {
   return (
     <div
       className="flex flex-col max-w-[1280px] font-pop mx-auto transition-height duration-1000">
+      <div className="min-h-[57px] w-full" />
       <main className="py-10 px-3 w-full flex flex-col lg:flex-row  items-center justify-between">
         <div className="font-light text-center lg:text-left text-lg xs:text-[21px] sm:text-2xl">
           <span className="gsap-fadeUp inline-block">
@@ -145,7 +146,7 @@ const Home = () => {
               className="font-bold from-indigo-900 to-primary bg-gradient-to-bl bg-clip-text text-transparent break-keep">
               ReactJS Developer
             </strong>
-            <span className="blink inline-block font-light text-[25px] xs:text-[35px] -translate-x-2">
+            <span className="blink inline-block font-light text-[25px] xs:text-[35px] -translate-x-2 ml-1">
               |
             </span>
           </span>
