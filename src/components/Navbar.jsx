@@ -37,31 +37,32 @@ const Navbar = () => {
     window.scroll({ top: 0, behavior: 'smooth' })
   }, [location]);
 
-  useEffect(() => {
-    const func = () => {
-      if (window?.scrollY > 60) {
-        navbarRef?.current?.classList?.remove("sticky");
-        navbarRef?.current?.classList?.add("fixed");
-        navbarRef?.current?.classList?.add("shadow-lg");
-      } else {
-        navbarRef?.current?.classList?.remove("fixed");
-        navbarRef?.current?.classList?.add("sticky");
-        navbarRef?.current?.classList?.remove("shadow-lg");
-      }
-    };
+  // useEffect(() => {
+  //   const func = () => {
+  //     if (window?.scrollY > 60) {
+  //       navbarRef?.current?.classList?.remove("sticky");
+  //       navbarRef?.current?.classList?.add("fixed");
+  //       navbarRef?.current?.classList?.add("shadow-lg");
+  //     } else {
+  //       navbarRef?.current?.classList?.remove("fixed");
+  //       navbarRef?.current?.classList?.add("sticky");
+  //       navbarRef?.current?.classList?.remove("shadow-lg");
+  //     }
+  //   };
 
-    window.addEventListener("scroll", func);
+  //   window.addEventListener("scroll", func);
 
-    return () => {
-      window.addEventListener("scroll", func);
-    };
-  }, []);
+  //   return () => {
+  //     window.addEventListener("scroll", func);
+  //   };
+  // }, []);
 
   return (
     <nav
       ref={navbarRef}
-      className="w-screen sticky top-0 font-pop bg-white/30 border-b backdrop-saturate-[180%] backdrop-blur-[10px] transition-all duration-700 select-none"
+      className="w-screen fixed top-0 font-pop bg-white/30 border-b backdrop-saturate-[180%] backdrop-blur-[10px] transition-all duration-700 select-none"
       style={{ zIndex: 10 }}>
+      <div className="min-h-[57px] w-full" />
       <div
         className={`flex justify-between items-center justify-self-center max-w-[1280px] min-h-[50px] px-4 py-3 sm:py-0 sm:px-8 m-auto bg-transparent`}>
         <Link to="/">

@@ -114,6 +114,7 @@ const Home = () => {
       autoStart: true,
       loop: true,
       delay: "natural",
+      cursor: false
     });
 
     return () => {
