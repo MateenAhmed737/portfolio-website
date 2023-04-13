@@ -4,8 +4,6 @@ import { Navbar, Footer, Project } from "./components";
 import { useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "./config/firebase";
-// import { Provider } from "react-redux";
-// import store from "./store";
 
 function App() {
 
@@ -64,6 +62,7 @@ function App() {
     <div className="relative overflow-x-hidden">
       <Router>
         <Navbar />
+        <div className="min-h-[57px] w-full" />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="portfolio" element={<Portfolio />} />
