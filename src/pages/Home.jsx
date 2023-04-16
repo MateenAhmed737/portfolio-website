@@ -17,6 +17,7 @@ const Home = () => {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    document.title = "Home - Mateen Ahmed";
 
     let ctx = gsap.context(() => {
       gsap.registerEffect({
@@ -202,7 +203,7 @@ const Home = () => {
         <div className="flex justify-center xs:justify-around pt-2 flex-wrap">
 
           {projects.map((data, i) => (
-            <Project key={data.title} {...data} extraImageClass={i == 0 ? 'scale-75 group-hover:scale-[0.8]' : 'group-hover:scale-105'} />
+            <Project key={data.title} {...data} />
           ))}
 
           <div className="gsap-project-fadeUp flex justify-center items-center w-full max-w-xs xs:w-1/4 md:w-full xs:min-w-[210px] h-[150px] xs:h-[100px] md:h-[150px] rounded-md overflow-hidden text-black font-semibold m-2">
@@ -232,12 +233,12 @@ const Section = ({ title, children, extraSectionClass }) => {
 }
 
 
-const Project = ({ title, skills, path, image, extraImageClass }) => {
+const Project = ({ title, skills, path, image }) => {
   const style1 = "transition-all duration-500 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0";
 
   return (
-    <Link to={path} className={`gsap-project-fadeUp flex items-center w-full max-w-[315px] xs:w-1/4 md:w-full xs:min-w-[210px] h-[200px] xs:h-[150px] md:h-[200px] rounded-md overflow-hidden border border-black/90 m-2 cursor-pointer group text-white relative ${title == 'Quote Generator' ? 'bg-[#8A6E9F]' : ''}`}>
-      <img src={image} alt={title} className={`w-full transition-all duration-300 ${extraImageClass}`} />
+    <Link to={path} className={`gsap-project-fadeUp flex items-center w-full max-w-[315px] xs:w-1/4 md:w-full xs:min-w-[210px] h-[200px] xs:h-[150px] md:h-[200px] rounded-md overflow-hidden border border-gray-400 m-2 cursor-pointer group text-white relative ${title == 'Quote Generator' ? 'bg-[#8A6E9F]' : ''}`}>
+      <img src={image} alt={title} className="w-full transition-all duration-300 group-hover:scale-105" />
       <div className={`absolute inset-0 bg-black/50 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100`} >
         <div className={style1 + 'text-sm md:text-base text-center mb-1'}>
           <h3 className="text-xl md:text-2xl font-medium mb-1"> {title} </h3>

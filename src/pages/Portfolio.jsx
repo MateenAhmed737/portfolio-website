@@ -10,6 +10,7 @@ const Portfolio = () => {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    document.title = "Portfolio - Mateen Ahmed";
 
     const ctx = gsap.context(() => {
       gsap.registerEffect({
@@ -49,7 +50,6 @@ const Portfolio = () => {
     <section className="flex justify-center items-center p-2 pb-5 font-pop">
       <div className="flex flex-wrap justify-evenly max-w-[1280px] w-full h-full">
         <Breadcrumbs obj={{ title: "Portfolio" }} style="p-2 sm:p-4" />
-
         {
           projects.map((data) => <ProjectCard key={data.title} {...data} />)
         }

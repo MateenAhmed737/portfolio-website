@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { BiVolumeLow, BiVolumeFull } from 'react-icons/bi';
 import data from "../../constants/data";
-// import gsap from 'gsap'
 
 const Pads = ({ links, clickHandler }) => {
     return (
@@ -25,11 +24,8 @@ function DrumMachine() {
     const [volume, setVolume] = useState(100);
     const [display, setDisplay] = useState("Volume: " + volume);
 
-    // useLayoutEffect(() => {
-    //     gsap.fromTo('#drum-machine', { opacity: 0, y: 100 }, { duration: 1, opacity: 1, y: 0 })
-    // }, [])
-
     useEffect(() => {
+        document.title = "Drum Machine - Mateen Ahmed";
         const func = e => {
             links.map((elem, i) =>
                 "Key" + elem[0] == e.code ? (handleClick(elem[1], elem[2], i)) : null

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
-// import gsap from 'gsap'
+import React, { useState, useEffect } from 'react'
 
 const PlandromeChecker = () => {
 
@@ -7,11 +6,8 @@ const PlandromeChecker = () => {
   const [outputStyle, setOutputStyle] = useState('text-gray-300')
   const [input, setInput] = useState('');
 
-  // useLayoutEffect(() => {
-  //   gsap.fromTo('.plandrome', { opacity: 0, y: 100 }, { duration: 1, opacity: 1, y: 0 })
-  // }, [])
-
   useEffect(() => {
+    document.title = "Plandrome Chacker - Mateen Ahmed";
     let func = e => {
       if (e.key == 'Enter' && document.getElementById('input').focus == true) handleSubmit();
     }
@@ -48,7 +44,7 @@ const PlandromeChecker = () => {
   }
 
   return (
-    <div className='w-full flex flex-col items-center justify-center font-jet p-2 py-8'>
+    <div className='w-full flex flex-col items-center justify-center font-jet p-2 py-8 min-h-[90vh]'>
 
       <div className='plandrome bg-gray-700 rounded-lg max-w-[500px] text-center p-3 animate-fadeUp'>
         <h1 className='text-[27px] xs:text-4xl font-bold text-gray-300 pt-1'>Plandrome Checker</h1>

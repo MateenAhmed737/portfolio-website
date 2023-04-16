@@ -51,9 +51,8 @@ And here. | Okay. | I think we get it.
 
   const preview = useRef();
   useEffect(() => {
-    (() => {
-      preview.current.innerHTML = marked.parse(markdown);
-    })()
+    document.title = "MD Previewer - Mateen Ahmed";
+    preview.current.innerHTML = marked.parse(markdown);
   }, []);
 
   useLayoutEffect(() => {

@@ -16,6 +16,7 @@ const Calculator = () => {
   }, [])
 
   useEffect(() => {
+    document.title = "Calculator - Mateen Ahmed";
     const resizeHandler = () => window.innerWidth <= 380 && setWinWidth(window.innerWidth);
     const keyDownHandler = e => {
       const index = calcKeys.name.indexOf(e.key);

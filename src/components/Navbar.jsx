@@ -20,8 +20,8 @@ const Navbar = () => {
   }
 
   const fetchPageVisites = async (userId) => {
-    let data = await getDoc(doc(db, 'usersActivity', userId));
-    setPagesVisited([...data.data().pagesVisited, window.location.pathname]);
+    let res = await getDoc(doc(db, 'usersActivity', userId));
+    setPagesVisited(await res.data().pagesVisited, window.location.pathname);
   }
 
   useEffect(() => {

@@ -8,8 +8,8 @@ const PomodoroClock = () => {
   const [sessionLength, setSessionLength] = useState(25);
   const [mins, setMins] = useState(sessionLength);
   const [secs, setSecs] = useState(0);
-  const [toggle, setToggle] = useState(false);
-  const [breakDone, setBreakDone] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
+  const [timerLabel, setTimerLabel] = useState("Session");
   const style = {
     btnStyle: 'px-3 py-1.5 text-red-500 hover:text-white border border-red-500 rounded transition-all duration-300 hover:bg-red-500 active:bg-red-700 m-1',
     iconStyle: 'cursor-pointer active:text-gray-600',
@@ -17,59 +17,65 @@ const PomodoroClock = () => {
   const audio = document.getElementById('beep');
 
   useLayoutEffect(() => {
+    document.title = "Pomodoro Clock - Mateen Ahmed";
     gsap.fromTo('.first, .second', { opacity: 0, y: 100 }, { duration: 1, opacity: 1, y: 0, stagger: 0.1 })
   }, []);
 
   useEffect(() => {
-    let counter;
-    if (toggle) {
-      counter = setInterval(() => {
-        setSecs(prev => prev - 1);
-      }, 1000);
-    }
+    const counter = isRunning && setInterval(() => {
+      setSecs(prev => {
+        if (prev == 0) {
+          setMins(prev => prev - 1);
+          return 59;
+        } else {
+          return prev - 1;
+        }
+      });
+    }, 1000);
 
     return () => {
       clearInterval(counter);
     };
-  }, [toggle]);
+  }, [isRunning]);
 
   useEffect(() => {
-    if (secs < 0) {
-      setMins(prev => prev - 1);
-      setSecs(59);
+    if (mins == 0 && secs == 0) {
+      audio.play();
+      setTimerLabel(timerLabel == "Break" ? "Session" : "Break");
     }
-    else if (mins == 0 && secs == 0) {
-      document.getElementById('beep').play();
-      document.getElementById('timer-label').innerText = !breakDone ? 'Break' : 'Session';
-      setBreakDone(prev => !prev);
-      setMins(!breakDone ? breakLength : sessionLength);
+  }, [secs])
+
+  useEffect(() => {
+    if (timerLabel == "Session") {
+      setMins(sessionLength);
+      setSecs(0)
     }
-  }, [mins, secs])
+  }, [sessionLength, timerLabel]);
 
   useEffect(() => {
-    setMins(sessionLength);
-    setSecs(0)
-  }, [sessionLength]);
-
-  useEffect(() => {
-    if (breakDone) {
+    if (timerLabel == "Break") {
       setMins(breakLength);
       setSecs(0)
     }
-  }, [breakLength]);
+  }, [breakLength, timerLabel]);
 
-  const handle_start_stop = () => {
+  const handle_start = () => {
+    setIsRunning(true);
+  };
+
+  const handle_stop = () => {
     audio.pause();
     audio.currentTime = 0;
-    setToggle(prev => !prev);
+    setIsRunning(false);
   };
 
   const handleReset = () => {
     audio.pause();
     audio.currentTime = 0;
-    setMins(sessionLength);
+    setMins(25);
     setSecs(0);
-    setToggle(false);
+    setTimerLabel("Session");
+    setIsRunning(false);
     setBreakLength(5);
     setSessionLength(25);
   };
@@ -85,6 +91,7 @@ const PomodoroClock = () => {
           Pomodoro Clock
         </h1>
 
+        {/* Increment & Decrement buttons */}
         <div className="flex flex-wrap self-center justify-center text-xl xs:text-2xl">
           <div
             id="break-label"
@@ -96,7 +103,7 @@ const PomodoroClock = () => {
                 className={style.iconStyle}
                 onClick={() =>
                   setBreakLength((prev) =>
-                    toggle ? prev : prev == 1 ? 1 : prev - 1
+                    isRunning ? prev : prev == 1 ? 1 : prev - 1
                   )
                 }
               />
@@ -106,7 +113,7 @@ const PomodoroClock = () => {
                 className={style.iconStyle}
                 onClick={() =>
                   setBreakLength((prev) =>
-                    toggle ? prev : prev == 60 ? prev : prev + 1
+                    isRunning ? prev : prev == 60 ? prev : prev + 1
                   )
                 }
               />
@@ -123,7 +130,7 @@ const PomodoroClock = () => {
                 className={style.iconStyle}
                 onClick={() =>
                   setSessionLength((prev) =>
-                    toggle ? prev : prev == 1 ? 1 : prev - 1
+                    isRunning ? prev : prev == 1 ? 1 : prev - 1
                   )
                 }
               />
@@ -133,7 +140,7 @@ const PomodoroClock = () => {
                 className={style.iconStyle}
                 onClick={() =>
                   setSessionLength((prev) =>
-                    toggle ? prev : prev == 60 ? prev : prev + 1
+                    isRunning ? prev : prev == 60 ? prev : prev + 1
                   )
                 }
               />
@@ -141,27 +148,34 @@ const PomodoroClock = () => {
           </div>
         </div>
 
+        {/* Display */}
         <div
-          className={`w-full max-w-[250px] p-3 mt-2 text-center text-[20px] ${
-            mins < 1
-              ? "text-red-600 bg-red-100 border border-red-300"
-              : "text-black bg-gray-100 border border-gray-300"
-          }`}>
-          <h2 id="timer-label">Session</h2>
+          className={`w-full max-w-[250px] p-3 mt-2 text-center text-[20px] ${mins < 1
+            ? "text-red-600 bg-red-100 border border-red-300"
+            : "text-black bg-gray-100 border border-gray-300"
+            }`}>
+          <h2 id="timer-label">{timerLabel}</h2>
           <p id="time-left" className="text-4xl font-semibold">
-            {`${mins < 10 ? "0" + String(mins) : mins}:${
-              secs < 10 ? "0" + String(secs) : secs
-            }`}
+            {
+              `${mins < 10 ? "0" : ''}${mins}:${secs < 10 ? "0" : ''}${secs}`
+            }
           </p>
           <audio id="beep" src={beep}></audio>
         </div>
 
+        {/* Start, Stop & Reset buttons */}
         <div className="flex flex-wrap mt-2">
           <button
-            id="start_stop"
+            id="start_btn"
             className={style.btnStyle}
-            onClick={handle_start_stop}>
-            Start / Stop
+            onClick={handle_start}>
+            Start
+          </button>
+          <button
+            id="stop_btn"
+            className={style.btnStyle}
+            onClick={handle_stop}>
+            Stop
           </button>
           <button id="reset" className={style.btnStyle} onClick={handleReset}>
             Reset

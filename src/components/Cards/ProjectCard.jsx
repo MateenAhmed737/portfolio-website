@@ -29,7 +29,7 @@ const ProjectCard = ({ image, title, skills, path }) => {
                     </div>
                     <button
                         className="group/button flex justify-center items-center w-full mt-4 mb-2 px-2 py-2 font-semibold tracking-wide rounded transition-all duration-300 border border-primary hover:bg-primary"
-                        onClick={() => navigate(path)}>
+                        onClick={() => path.includes('https') ? window.open(path) : navigate(path)}>
                         <span className="transition-all duration-300 group-hover/button:-translate-x-1 text-primary group-hover/button:text-white">
                             View
                         </span>

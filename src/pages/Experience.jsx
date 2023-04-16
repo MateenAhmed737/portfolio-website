@@ -1,8 +1,12 @@
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
 import { FaBriefcase, FaGraduationCap, FaSchool } from "react-icons/fa";
+import { useEffect } from 'react';
 
 const Experience = () => {
+  useEffect(() => {
+    document.title = "Experience - Mateen Ahmed";
+  }, [])
 
   return (
     <div className="font-pop font-medium selection:text-primary selection:bg-white">
@@ -114,7 +118,7 @@ const Experience = () => {
           contentStyle={{ background: "#6366f1", color: "#fff" }}
           contentArrowStyle={{ borderRight: "7px solid  #6366f1" }}
           dateClassName="min-[1170px]:text-black"
-          date="Feb 2022 - Mar 2022"
+          date="Feb 2023 - Mar 2023"
           icon={<FaBriefcase />}
           iconStyle={{ background: "#6366f1", color: "#fff" }}>
           <h3 className="vertical-timeline-element-title text-xl font-semibold">ReactJS Intern</h3>

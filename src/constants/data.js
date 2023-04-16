@@ -1,4 +1,5 @@
 import Home from "../assets/images/home.png";
+import Store from "../assets/images/Store.jpg";
 import Md from "../assets/images/md.jpg";
 import Drum from "../assets/images/drum.jpg";
 import Quotes from "../assets/images/quotes.png";
@@ -130,6 +131,12 @@ const data = {
     //   path: "/project/calculator",
     //   image: Calc,
     // },
+    {
+      title: "Ecommerce store",
+      skills: ["NextJS", "ReactJS", "TailwindCSS", "Stripe"],
+      path: "https://tradezone.vercel.app",
+      image: Store,
+    },
     {
       title: "Quote Generator",
       skills: ["ReactJS", "TailwindCSS", "GSAP"],

@@ -20,6 +20,8 @@ const Contact = () => {
   })
 
   useLayoutEffect(() => {
+    document.title = "Contact - Mateen Ahmed";
+
     let ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
       gsap.registerEffect({

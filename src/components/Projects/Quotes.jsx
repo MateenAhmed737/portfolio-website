@@ -12,6 +12,7 @@ const Quotes = () => {
 
 
   useEffect(() => {
+    document.title = "Quotes Generator - Mateen Ahmed";
     const key = (e) => e.code == "Space" ? (e.preventDefault(), newQuote()) : null;
     document.addEventListener("keydown", key);
 

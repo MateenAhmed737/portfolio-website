@@ -24,11 +24,9 @@ function App() {
   }
 
   const sendData = async () => {
-    let docRef;
-
     try {
       let ip = await getIP();
-      docRef = await addDoc(collection(db, 'usersActivity'), {
+      let docRef = await addDoc(collection(db, 'usersActivity'), {
         info: {
           userAgent: navigator.userAgent,
           platform: navigator.platform,
