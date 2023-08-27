@@ -5,6 +5,8 @@ import Drum from "../assets/images/drum.jpg";
 import Quotes from "../assets/images/quotes.png";
 import Pomodoro from "../assets/images/pomodoro.jpg";
 import Plandrome from "../assets/images/plandrome.jpg";
+import Kirista from "../assets/images/kirista.jpg";
+import Kaci from "../assets/images/kaci.jpg";
 // import Calc from "../assets/images/calc.jpg";
 
 const data = {
@@ -132,54 +134,61 @@ const data = {
     //   image: Calc,
     // },
     {
+      title: "Kaci Admin Panel",
+      skills: ["ReactJS", "TailwindCSS"],
+      link: "https://kacihelp.com/login",
+      images: [Kaci],
+    },
+    {
+      title: "Kirista Admin Panel",
+      skills: ["ReactJS", "TailwindCSS"],
+      link: "https://manager.kirista.com/login",
+      images: [Kirista],
+    },
+    {
       title: "Ecommerce store",
       skills: ["NextJS", "ReactJS", "TailwindCSS", "Stripe"],
-      path: "https://tradezone.vercel.app",
-      image: Store,
+      link: "https://tradezone.vercel.app",
+      images: [Store],
     },
     {
       title: "Quote Generator",
       skills: ["ReactJS", "TailwindCSS", "GSAP"],
       path: "/project/quotes-generator",
-      image: Quotes,
+      images: [Quotes],
     },
     {
       title: "Pomodoro Clock",
       skills: ["ReactJS", "TailwindCSS", "GSAP"],
       path: "/project/pomodoro",
-      image: Pomodoro,
+      images: [Pomodoro],
     },
     {
       title: "Drum Machine",
       skills: ["ReactJS", "TailwindCSS", "GSAP"],
       path: "/project/drum-machine",
-      image: Drum,
+      images: [Drum],
     },
-    {
-      title: "My Portfolio Website",
-      skills: ["ReactJS", "TailwindCSS", "GSAP", "Redux"],
-      path: "/",
-      image: Home,
-    },
+    // {
+    //   title: "My Portfolio Website",
+    //   skills: ["ReactJS", "TailwindCSS", "GSAP", "Redux"],
+    //   path: "/",
+    //   images: [Home],
+    // },
     {
       title: "Plandrome Checker",
       skills: ["ReactJS", "TailwindCSS", "GSAP"],
       path: "/project/plandrome",
-      image: Plandrome,
+      images: [Plandrome],
     },
     {
       title: "Markdown Previewer",
       skills: ["ReactJS", "TailwindCSS", "GSAP"],
       path: "/project/markdown-previewer",
-      image: Md,
+      images: [Md],
     },
   ],
-  titles: [
-    "React.js Developer.",
-    "React Native Developer.",
-    "Web Developer.",
-    "Mobile App Developer.",
-  ],
+  titles: ["React.js Developer.", "React Native Developer.", "Web Developer."],
 };
 
 export default data;

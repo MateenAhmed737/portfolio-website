@@ -1,5 +1,7 @@
-import { useLayoutEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { useLayoutEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import gsap from "gsap/gsap-core";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import data from "../constants/data";
@@ -8,12 +10,17 @@ import { FaPhone, FaMapMarkerAlt, FaHtml5, FaJs, FaCss3, FaReact, FaBootstrap, F
 import { SiAdobephotoshop, SiFirebase, SiGmail, SiGreensock, SiJquery, SiMicrosoftexcel, SiRedux, SiTailwindcss } from "react-icons/Si";
 import { MdMessage } from "react-icons/Md";
 import { BsArrowRight } from 'react-icons/Bs';
+import { IoMdPhotos } from 'react-icons/io';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { AiFillEye } from 'react-icons/ai';
 import CV from '../assets/documents/CV_Mateen_Ahmed.pdf';
 import ContactButton from '../components/Buttons/ContactButton';
 
 const Home = () => {
   const titleRef = useRef();
-  const projects = data.projects.slice(0, 3);
+  const projects = data.projects.slice(0, 5);
+
+  const [slider, setSlider] = useState({ images: [], isOpen: false })
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -104,7 +111,7 @@ const Home = () => {
 
     const paraTypeWriter = new Typewriter(".paragraph", {
       strings:
-        "Seeking an entry-level position as an Application Developer to utilize my skills and knowledge in software development, while continuously learning and expanding my expertise in the field. Aiming to make meaningful contributions to a company's success by taking on challenging projects and producing high-quality and innovative software solutions.",
+        "As an aspiring ReactJS Developer, I am seeking a junior-level position where I can utilize my skills and knowledge in software development to produce high-quality and innovative software solutions. With a strong background in front-end development libraries and experience building web apps with ReactJS, I am proficient in languages such as HTML, CSS, and JavaScript, as well as frameworks such as React and Redux. I have completed courses in front-end development libraries and am committed to continuously learning and expanding my expertise in the field. As a motivated and dedicated team player, I am excited to take on challenging projects and make meaningful contributions to a company's success.",
       autoStart: true,
       loop: false,
       delay: 25,
@@ -183,8 +190,8 @@ const Home = () => {
           <Skill classes='gsap-languages-fadeUp' title='CSS3' value='80' icon={FaCss3} color='text-blue-600' />
         </SkillSet>
         <SkillSet title='Frameworks & Libraries' class='gsap-libraries-fadeUp'>
-          <Skill classes='gsap-libraries-fadeUp' title='ReactJS' value='70' icon={FaReact} color='text-blue-600' />
-          <Skill classes='gsap-libraries-fadeUp' title='React Native' value='45' icon={FaReact} color='text-blue-600' />
+          <Skill classes='gsap-libraries-fadeUp' title='ReactJS' value='80' icon={FaReact} color='text-blue-600' />
+          <Skill classes='gsap-libraries-fadeUp' title='React Native' value='30' icon={FaReact} color='text-blue-600' />
           <Skill classes='gsap-libraries-fadeUp' title='Redux' value='70' icon={SiRedux} color='text-purple-700' />
           <Skill classes='gsap-libraries-fadeUp' title='TailwindCSS' value='70' icon={SiTailwindcss} color='text-blue-700' />
           <Skill classes='gsap-libraries-fadeUp' title='Bootstrap' value='55' icon={FaBootstrap} color='text-purple-700' />
@@ -192,7 +199,7 @@ const Home = () => {
           <Skill classes='gsap-libraries-fadeUp' title='GSAP' value='45' icon={SiGreensock} color='text-green-700' />
         </SkillSet>
         <SkillSet title='Tools' class='gsap-tools-fadeUp'>
-          <Skill classes='gsap-tools-fadeUp' title='Firebase' value='50' icon={SiFirebase} color='text-yellow-500' />
+          <Skill classes='gsap-tools-fadeUp' title='Firebase' value='40' icon={SiFirebase} color='text-yellow-500' />
           <Skill classes='gsap-tools-fadeUp' title='Photoshop' value='80' icon={SiAdobephotoshop} color='text-blue-800' />
           <Skill classes='gsap-tools-fadeUp' title='MS Excel' value='20' icon={SiMicrosoftexcel} color='text-green-700' />
           <Skill classes='gsap-tools-fadeUp' title='Git' value='20' icon={FaGitAlt} color='text-orange-500' />
@@ -202,8 +209,8 @@ const Home = () => {
       <Section title='Projects'>
         <div className="flex justify-center xs:justify-around pt-2 flex-wrap">
 
-          {projects.map((data, i) => (
-            <Project key={data.title} {...data} />
+          {projects.map((data) => (
+            <Project key={data.title} {...data} slider={slider} setSlider={setSlider} />
           ))}
 
           <div className="gsap-project-fadeUp flex justify-center items-center w-full max-w-xs xs:w-1/4 md:w-full xs:min-w-[210px] h-[150px] xs:h-[100px] md:h-[150px] rounded-md overflow-hidden text-black font-semibold m-2">
@@ -211,6 +218,17 @@ const Home = () => {
               See More
             </Link>
           </div>
+
+          <Lightbox
+            open={slider.isOpen}
+            close={() => setSlider({ ...slider, isOpen: false })}
+            slides={slider.images}
+            render={{
+              iconPrev: () => slider.images.length > 1 ? <div className="text-3xl bg-gray-800/60 hover:bg-gray-800/100 transition-all duration-300 p-1.5 rounded-full ml-1"><FiChevronLeft /></div> : null,
+              iconNext: () => slider.images.length > 1 ? <div className="text-3xl bg-gray-800/60 hover:bg-gray-800/100 transition-all duration-300 p-1.5 rounded-full ml-1"><FiChevronRight /></div> : null,
+              // iconClose: () => <MyCloseIcon />,
+            }}
+          />
 
         </div>
       </Section>
@@ -233,22 +251,31 @@ const Section = ({ title, children, extraSectionClass }) => {
 }
 
 
-const Project = ({ title, skills, path, image }) => {
-  const style1 = "transition-all duration-500 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0";
+const Project = ({ title, skills, path, link, images, slider, setSlider }) => {
+  const navigate = useNavigate();
+  const animation = "transition-all duration-500 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0";
+
+  const openSlider = () => setSlider({ images: images.map(e => ({ src: e })), isOpen: true });
 
   return (
-    <Link to={path} className={`gsap-project-fadeUp flex items-center w-full max-w-[315px] xs:w-1/4 md:w-full xs:min-w-[210px] h-[200px] xs:h-[150px] md:h-[200px] rounded-md overflow-hidden border border-gray-400 m-2 cursor-pointer group text-white relative ${title == 'Quote Generator' ? 'bg-[#8A6E9F]' : ''}`}>
-      <img src={image} alt={title} className="w-full transition-all duration-300 group-hover:scale-105" />
+    <div className={`gsap-project-fadeUp flex items-center w-full max-w-[315px] xs:w-1/4 md:w-full xs:min-w-[210px] h-[200px] xs:h-[150px] md:h-[200px] rounded-md overflow-hidden border border-gray-400 m-2 group text-white relative ${title == 'Quote Generator' ? 'bg-[#8A6E9F]' : ''}`}>
+      <img src={images[0]} alt={title} className="w-full transition-all duration-300 group-hover:scale-105" />
       <div className={`absolute inset-0 bg-black/50 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100`} >
-        <div className={style1 + 'text-sm md:text-base text-center mb-1'}>
+        <div className={animation + ' text-sm md:text-base text-center mb-1'}>
           <h3 className="text-xl md:text-2xl font-medium mb-1"> {title} </h3>
           Skills: {skills.join(', ')}
         </div>
-        <div className="h-full max-h-[100px] xs:h-10 md:h-full flex items-center justify-center">
-          <BsArrowRight className={`text-4xl mt-5 xs:text-2xl sm:text-2xl md:text-4xl hover:text-gray-200 delay-200 ${style1}`} />
+
+        <div className="h-full max-h-[100px] xs:h-10 md:h-full flex items-center justify-evenly">
+          <button title="View images" onClick={openSlider} className={`text-3xl delay-200 ${animation}`}>
+            <IoMdPhotos className="hover:opacity-70 active:opacity-100" />
+          </button>
+          <Link title="View project" to={link || path} target={link ? '_blank' : '_self'} className={`text-3xl delay-300 ${animation}`}>
+            <AiFillEye className="hover:opacity-70 active:opacity-100" />
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

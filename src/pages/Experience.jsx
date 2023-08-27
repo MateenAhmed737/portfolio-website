@@ -127,6 +127,20 @@ const Experience = () => {
             Built web apps with ReactJS
           </p>
         </VerticalTimelineElement>
+
+        <VerticalTimelineElement
+          contentStyle={{ background: "#6366f1", color: "#fff" }}
+          contentArrowStyle={{ borderRight: "7px solid  #6366f1" }}
+          dateClassName="min-[1170px]:text-black"
+          date="Mar 2023 - present"
+          icon={<FaBriefcase />}
+          iconStyle={{ background: "#6366f1", color: "#fff" }}>
+          <h3 className="vertical-timeline-element-title text-xl font-semibold">ReactJS Intern</h3>
+          <h4 className="vertical-timeline-element-subtitle">Sas Solutions</h4>
+          <p className='!font-normal'>
+            Built admin portals and other web apps with ReactJS, TailwindCSS, Redux/Context API and various other libraries.
+          </p>
+        </VerticalTimelineElement>
       </VerticalTimeline>
     </div>
   );
