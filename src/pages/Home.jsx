@@ -263,14 +263,14 @@ const Project = ({ title, skills, path, link, images, slider, setSlider }) => {
       <div className={`absolute inset-0 bg-black/50 p-2 transition-all duration-500 opacity-0 group-hover:opacity-100`} >
         <div className={animation + ' text-sm md:text-base text-center mb-1'}>
           <h3 className="text-xl md:text-2xl font-medium mb-1"> {title} </h3>
-          Skills: {skills.join(', ')}
+          Skills: {skills.join(', ').length > 65 ? skills.join(', ').slice(0, 65) + '...' : skills.join(', ')}
         </div>
 
         <div className="h-full max-h-[100px] xs:h-10 md:h-full flex items-center justify-evenly">
           <button title="View images" onClick={openSlider} className={`text-3xl delay-200 ${animation}`}>
             <IoMdPhotos className="hover:opacity-70 active:opacity-100" />
           </button>
-          <Link title="View project" to={link || path} target={link ? '_blank' : '_self'} className={`text-3xl delay-300 ${animation}`}>
+          <Link title="View project" to={link || path || ''} target={link ? '_blank' : '_self'} className={`text-3xl delay-300 ${link || path ? '' : 'hidden'} ${animation}`}>
             <AiFillEye className="hover:opacity-70 active:opacity-100" />
           </Link>
         </div>

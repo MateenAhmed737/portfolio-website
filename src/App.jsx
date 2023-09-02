@@ -10,7 +10,6 @@ function App() {
   useEffect(() => {
     let localStorageItem = JSON.parse(localStorage.getItem('dataSent'));
     if (!localStorageItem) sendData();
-
   }, [])
 
   const getIP = async () => {

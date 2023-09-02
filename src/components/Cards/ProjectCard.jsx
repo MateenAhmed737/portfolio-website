@@ -3,7 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { BsChevronLeft, BsChevronRight } from "react-icons/Bs";
 import { useNavigate } from "react-router-dom";
 
-const ProjectCard = ({ images, title, skills, path, slider, setSlider }) => {
+const ProjectCard = ({ images, title, skills, path, link }) => {
     const navigate = useNavigate();
     const [currentImage, setCurrentImage] = useState(0);
 
@@ -23,22 +23,21 @@ const ProjectCard = ({ images, title, skills, path, slider, setSlider }) => {
                     <img
                         src={images[currentImage]}
                         alt={title + " image" + (currentImage + 1)}
-                        className={`blur-sm cursor-pointer transition-all duration-300 h-full w-auto saturate-0 group-hover/card:saturate-100 group-hover/card:blur-0 ${title == "Quote Generator" ? "scale-105" : ""}`}
-                        onClick={() => setSlider({ images, currentImage, isOpen: true })}
+                        className={`blur-sm transition-all duration-300 h-full w-auto saturate-0 group-hover/card:saturate-100 group-hover/card:blur-0 ${title == "Quote Generator" ? "scale-105" : ""}`}
                     />
 
                     {/* Next && Prev Buttons */}
                     {images.length > 1 && (
                         <>
-                            <BsChevronLeft id='prev' onClick={handleArrowClick} className='absolute top-[45%] left-1 text-3xl font-semibold p-2 rounded-full text-white transition-all duration-300 -translate-x-10 bg-black/40 hover:bg-black/70 group-hover/card:translate-x-0 cursor-pointer' />
-                            <BsChevronRight id='next' onClick={handleArrowClick} className='absolute top-[45%] right-1 text-3xl font-semibold p-2 rounded-full text-white transition-all duration-300 translate-x-10 bg-black/40 hover:bg-black/70 group-hover/card:translate-x-0 cursor-pointer' />
+                            <BsChevronLeft id='prev' onClick={handleArrowClick} className='absolute top-[45%] left-2 text-3xl font-semibold p-2 rounded-full text-white transition-all duration-300 -translate-x-10 bg-black/40 hover:bg-black/70 group-hover/card:translate-x-0 cursor-pointer' />
+                            <BsChevronRight id='next' onClick={handleArrowClick} className='absolute top-[45%] right-2 text-3xl font-semibold p-2 rounded-full text-white transition-all duration-300 translate-x-10 bg-black/40 hover:bg-black/70 group-hover/card:translate-x-0 cursor-pointer' />
                         </>
                     )}
 
                     {images.length > 1 && (
-                        <div className="absolute flex items-center p-1 px-1.5 bottom-0 left-[40%] bg-white rounded-t-md z-[2] transition-all duration-300 translate-y-10 group-hover/card:translate-y-0">
+                        <div className="absolute flex items-center p-1 px-1.5 bottom-0 -translate-x-[50%] left-1/2 bg-white rounded-t-md z-[2] transition-all duration-300 translate-y-10 group-hover/card:translate-y-0">
                             {images.map((_, indx) => (
-                                <div key={'indicator' + indx} onClick={() => setSlider({ ...slider, currentImage: indx })} className={`h-2 m-[1.5px] rounded cursor-pointer transition-all duration-300 hover:bg-black/70 ${indx == slider.currentImage ? 'w-5 bg-black/70' : 'w-2 bg-black/50'}`} />
+                                <div key={'indicator' + indx} onClick={() => setCurrentImage(indx)} className={`h-2 m-[1.5px] rounded cursor-pointer transition-all duration-300 hover:bg-black/70 ${indx == currentImage ? 'w-5 bg-black/70' : 'w-2 bg-black/50'}`} />
                             ))}
                         </div>
                     )}
@@ -55,8 +54,8 @@ const ProjectCard = ({ images, title, skills, path, slider, setSlider }) => {
                         </ul>
                     </div>
                     <button
-                        className="group/button flex justify-center items-center w-full mt-4 mb-2 px-2 py-2 font-semibold tracking-wide rounded transition-all duration-300 border border-primary hover:bg-primary"
-                        onClick={() => path.includes('https') ? window.open(path) : navigate(path)}>
+                        className={`group/button ${link || path ? 'flex' : 'hidden'} justify-center items-center w-full mt-4 mb-2 px-2 py-2 font-semibold tracking-wide rounded transition-all duration-300 border border-primary hover:bg-primary`}
+                        onClick={() => link ? window.open(link) : navigate(path)}>
                         <span className="transition-all duration-300 group-hover/button:-translate-x-1 text-primary group-hover/button:text-white">
                             View
                         </span>

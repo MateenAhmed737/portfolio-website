@@ -6,7 +6,22 @@ import Quotes from "../assets/images/quotes.png";
 import Pomodoro from "../assets/images/pomodoro.jpg";
 import Plandrome from "../assets/images/plandrome.jpg";
 import Kirista from "../assets/images/kirista.jpg";
-import Kaci from "../assets/images/kaci.jpg";
+import Kaci1 from "../assets/images/kaci1.jpg";
+import Kaci2 from "../assets/images/kaci2.jpg";
+import Kaci3 from "../assets/images/kaci3.jpg";
+import Kaci4 from "../assets/images/kaci4.jpg";
+import Kaci5 from "../assets/images/kaci5.jpg";
+import Kaci6 from "../assets/images/kaci6.jpg";
+import Kaci7 from "../assets/images/kaci7.jpg";
+import Kaci8 from "../assets/images/kaci8.jpg";
+import Kaci9 from "../assets/images/kaci9.jpg";
+import Kaci10 from "../assets/images/kaci10.jpg";
+import Kaci11 from "../assets/images/kaci11.jpg";
+import Kaci12 from "../assets/images/kaci12.jpg";
+import Kaci13 from "../assets/images/kaci13.jpg";
+import Kaci14 from "../assets/images/kaci14.jpg";
+import Kaci15 from "../assets/images/kaci15.jpg";
+import Kaci16 from "../assets/images/kaci16.jpg";
 // import Calc from "../assets/images/calc.jpg";
 
 const data = {
@@ -134,15 +149,45 @@ const data = {
     //   image: Calc,
     // },
     {
-      title: "Kaci Admin Panel",
-      skills: ["ReactJS", "TailwindCSS"],
-      link: "https://kacihelp.com/login",
-      images: [Kaci],
+      title: "Kaci Web App",
+      skills: [
+        "ReactJS",
+        "Redux",
+        "TailwindCSS",
+        "Echarts",
+        "React Quill",
+        "Data Structure Algorithms",
+      ],
+      // link: "https://kacihelp.com/login",
+      images: [
+        Kaci1,
+        Kaci2,
+        Kaci3,
+        Kaci4,
+        Kaci5,
+        Kaci6,
+        Kaci7,
+        Kaci8,
+        Kaci9,
+        Kaci10,
+        Kaci11,
+        Kaci12,
+        Kaci13,
+        Kaci14,
+        Kaci15,
+        Kaci16,
+      ],
     },
     {
-      title: "Kirista Admin Panel",
-      skills: ["ReactJS", "TailwindCSS"],
-      link: "https://manager.kirista.com/login",
+      title: "Kirista Web App",
+      skills: [
+        "ReactJS",
+        "Redux",
+        "TailwindCSS",
+        "React Quill",
+        "Data Structure Algorithms",
+      ],
+      // link: "https://manager.kirista.com/login",
       images: [Kirista],
     },
     {
