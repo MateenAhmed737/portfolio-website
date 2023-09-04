@@ -114,7 +114,7 @@ const Experience = () => {
           <a target='_blank' href="https://www.freecodecamp.org/certification/mateenahmed/front-end-development-libraries" className='text-primary text-center font-normal bg-white block rounded px-1.5 py-1.5 mt-3 hover:bg-white/80'>view certification</a>
         </VerticalTimelineElement>
 
-        <VerticalTimelineElement
+        {/* <VerticalTimelineElement
           contentStyle={{ background: "#6366f1", color: "#fff" }}
           contentArrowStyle={{ borderRight: "7px solid  #6366f1" }}
           dateClassName="min-[1170px]:text-black"
@@ -126,16 +126,30 @@ const Experience = () => {
           <p className='!font-normal'>
             Built web apps with ReactJS
           </p>
+        </VerticalTimelineElement> */}
+
+        <VerticalTimelineElement
+          contentStyle={{ background: "#6366f1", color: "#fff" }}
+          contentArrowStyle={{ borderRight: "7px solid  #6366f1" }}
+          dateClassName="min-[1170px]:text-black"
+          date="Mar 2023 - Sep 2023"
+          icon={<FaBriefcase />}
+          iconStyle={{ background: "#6366f1", color: "#fff" }}>
+          <h3 className="vertical-timeline-element-title text-xl font-semibold">ReactJS Intern</h3>
+          <h4 className="vertical-timeline-element-subtitle">Sas Solutions</h4>
+          <p className='!font-normal'>
+            Built admin portals and other web apps with ReactJS, TailwindCSS, Redux/Context API and various other libraries.
+          </p>
         </VerticalTimelineElement>
 
         <VerticalTimelineElement
           contentStyle={{ background: "#6366f1", color: "#fff" }}
           contentArrowStyle={{ borderRight: "7px solid  #6366f1" }}
           dateClassName="min-[1170px]:text-black"
-          date="Mar 2023 - present"
+          date="Sep 2023 - present"
           icon={<FaBriefcase />}
           iconStyle={{ background: "#6366f1", color: "#fff" }}>
-          <h3 className="vertical-timeline-element-title text-xl font-semibold">ReactJS Intern</h3>
+          <h3 className="vertical-timeline-element-title text-xl font-semibold">Jr. ReactJS Developer</h3>
           <h4 className="vertical-timeline-element-subtitle">Sas Solutions</h4>
           <p className='!font-normal'>
             Built admin portals and other web apps with ReactJS, TailwindCSS, Redux/Context API and various other libraries.

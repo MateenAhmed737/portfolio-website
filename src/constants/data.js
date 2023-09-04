@@ -233,7 +233,7 @@ const data = {
       images: [Md],
     },
   ],
-  titles: ["React.js Developer.", "React Native Developer.", "Web Developer."],
+  titles: ["Jr. ReactJS Developer", "React Native Developer", "Web Developer"],
 };
 
 export default data;
